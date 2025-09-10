@@ -15,6 +15,11 @@ public class VectorPersona {
         totalElementos =0;
         persona = new Persona[50];
     }
+    public VectorPersona(int limite){
+        totalElementos = 0;
+        persona = new Persona[limite];
+        
+    }
     public void agregar(Persona valor){
         if(totalElementos<persona.length){
             persona[totalElementos] = valor;

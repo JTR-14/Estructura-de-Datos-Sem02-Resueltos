@@ -5,15 +5,16 @@
 package Ejercicio01;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author USER
  */
 public class FrmEjercicio01 extends javax.swing.JFrame {
-    private int n;
+    DefaultTableModel tabla = new DefaultTableModel();
+    VectorPersona vector = new VectorPersona();
     public FrmEjercicio01() {
-        n = Integer.parseInt(JOptionPane.showInputDialog("Digite numero de Personas: "));
         initComponents();
     }
 
@@ -35,7 +36,7 @@ public class FrmEjercicio01 extends javax.swing.JFrame {
         txtOrdenar = new javax.swing.JButton();
         txtSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPersona = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordenamiento burbuja");
@@ -75,15 +76,28 @@ public class FrmEjercicio01 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/24-em-plus.png"))); // NOI18N
         txtIngresar.setText("INGRESAR");
+        txtIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIngresarActionPerformed(evt);
+            }
+        });
 
         txtOrdenar.setText("Ordenar por Nombre");
+        txtOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrdenarActionPerformed(evt);
+            }
+        });
 
-        txtSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/24-em-cross.png"))); // NOI18N
         txtSalir.setText("SALIR");
+        txtSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalirActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -94,31 +108,29 @@ public class FrmEjercicio01 extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPersona);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(txtIngresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtOrdenar)
+                .addGap(30, 30, 30)
+                .addComponent(txtSalir)
+                .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(txtIngresar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtOrdenar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSalir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(15, 15, 15)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,17 +138,40 @@ public class FrmEjercicio01 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIngresar)
-                    .addComponent(txtOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSalir))
-                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_txtSalirActionPerformed
+
+    private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
+        String nombre, telefono;
+        nombre = txtNombre.getText();
+        telefono = txtTelefono.getText();
+        Persona persona = new Persona(nombre, telefono);
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        txtNombre.requestFocus();
+        vector.agregar(persona);
+        vector.mostrar(tabla);
+        tblPersona.setModel(tabla);
+    }//GEN-LAST:event_txtIngresarActionPerformed
+
+    private void txtOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrdenarActionPerformed
+        vector.ordenarNombre();
+        vector.mostrar(tabla);
+    }//GEN-LAST:event_txtOrdenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +183,7 @@ public class FrmEjercicio01 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPersona;
     private javax.swing.JButton txtIngresar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JButton txtOrdenar;
