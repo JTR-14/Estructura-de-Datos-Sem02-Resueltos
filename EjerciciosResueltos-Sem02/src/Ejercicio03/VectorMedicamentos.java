@@ -33,5 +33,22 @@ public class VectorMedicamentos {
         }
         modelo.setDataVector(datos, titulos);
     }
+    private void ordenarSeleccionPrecio(Medicamentos vector[] ,int totalElementos){
+        int minimo,i, j;
+        Medicamentos aux;
+        for(i=0 ; i<totalElementos-1 ; i++ ){
+            minimo = i;
+            for(j=i+1 ; j<totalElementos ; j++){
+                if(vector[j].getPrecio()<vector[j-1].getPrecio())
+                    minimo = j;  
+            }
+                    aux = vector[i];
+                    vector[i] = vector[minimo];
+                    vector[minimo] = aux;
+        }
+    }
+    public void ordenarSeleccionPrecio(){
+        ordenarSeleccionPrecio(vector,totalElementos);
+    }
     
 }

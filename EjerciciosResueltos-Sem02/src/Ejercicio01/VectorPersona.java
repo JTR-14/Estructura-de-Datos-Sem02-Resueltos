@@ -35,7 +35,7 @@ public class VectorPersona {
       }
       modelo.setDataVector(datos, titulos);
     }
-    public void ordenarNombre() {
+    private void ordenarNombre(Persona persona[], int totalElementos) {
     int i, j;
     Persona temporal;
     for (i = 0; i < totalElementos - 1; i++) {
@@ -45,8 +45,11 @@ public class VectorPersona {
                 temporal = persona[j];
                 persona[j] = persona[j - 1];
                 persona[j - 1] = temporal;
+                }
             }
         }
     }
-}
+    public void ordenarNombre(){
+        ordenarNombre(persona,totalElementos);
+    }
 }
