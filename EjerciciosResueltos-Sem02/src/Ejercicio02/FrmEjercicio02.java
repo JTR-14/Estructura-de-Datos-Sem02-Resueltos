@@ -4,16 +4,17 @@
  */
 package Ejercicio02;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class FrmEjercicio02 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FrmEjercicio02
-     */
+    
+   
     public FrmEjercicio02() {
+        
         initComponents();
     }
 
@@ -45,7 +46,7 @@ public class FrmEjercicio02 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
