@@ -74,6 +74,7 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblLibros);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingreso Libros de Biblioteca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 1, 18))); // NOI18N
 
         jLabel1.setText("Código:");

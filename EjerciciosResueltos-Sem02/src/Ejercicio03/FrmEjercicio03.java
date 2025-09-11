@@ -174,12 +174,17 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSalirActionPerformed
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-        String nombre, telefono;
+        String codigo, nombre, laboratorio ;
+        double precio;
+        codigo = txtCodigo.getText();
         nombre = txtNombre.getText();
-        telefono = txtTelefono.getText();
-        Persona persona = new Persona(nombre, telefono);
+        laboratorio = txtLaboratorio.getText();
+        precio = Double.parseDouble(txtPrecio.getText());
+        Medicamentos medicamento = new Medicamentos(codigo, nombre, laboratorio, precio);
         txtNombre.setText("");
-        txtTelefono.setText("");
+        txtCodigo.setText("");
+        txtLaboratorio.setText("");
+        txtPrecio.setText("");
         txtNombre.requestFocus();
         vector.agregar(persona);
         vector.mostrar(tabla);

@@ -33,22 +33,40 @@ public class VectorMedicamentos {
         }
         modelo.setDataVector(datos, titulos);
     }
-    private void ordenarSeleccionPrecio(Medicamentos vector[] ,int totalElementos){
-        int minimo,i, j;
+    private void ordenarSeleccionPrecioDes(Medicamentos vector[] ,int totalElementos){
+        int maximo,i, j;
         Medicamentos aux;
         for(i=0 ; i<totalElementos-1 ; i++ ){
-            minimo = i;
+            maximo = i;
             for(j=i+1 ; j<totalElementos ; j++){
-                if(vector[j].getPrecio()<vector[j-1].getPrecio())
-                    minimo = j;  
+                if(vector[j].getPrecio()>vector[maximo].getPrecio())
+                    maximo = j;  
             }
                     aux = vector[i];
-                    vector[i] = vector[minimo];
-                    vector[minimo] = aux;
+                    vector[i] = vector[maximo];
+                    vector[maximo] = aux;
         }
     }
-    public void ordenarSeleccionPrecio(){
-        ordenarSeleccionPrecio(vector,totalElementos);
+    public void ordenarSeleccionPrecioDes(){
+        ordenarSeleccionPrecioDes(vector,totalElementos);
+    }
+    private void ordenarSeleccionNombre(Medicamentos vector[], int totalElementos){
+        int minimo,i,j;
+        Medicamentos aux;
+        for(i=0 ; i< totalElementos-1 ; i++){
+            minimo = i;
+            for(j=i+1; j<totalElementos ; j++){
+                if(vector[j].getNombre().compareTo(vector[minimo].getNombre())<0)
+                    minimo = j;
+                
+            } 
+            aux = vector[i];
+            vector[i]=vector[minimo];
+            vector[minimo] = aux;
+        }
+    }
+    public void ordenarSeleccionNombre(){
+        ordenarSeleccionNombre(vector,totalElementos);
     }
     
 }
