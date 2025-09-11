@@ -56,7 +56,7 @@ public class VectorMedicamentos {
         for(i=0 ; i< totalElementos-1 ; i++){
             minimo = i;
             for(j=i+1; j<totalElementos ; j++){
-                if(vector[j].getNombre().compareTo(vector[minimo].getNombre())<0)
+                if(vector[j].getNombre().compareToIgnoreCase(vector[minimo].getNombre())<0)
                     minimo = j;
                 
             } 

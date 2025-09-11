@@ -4,15 +4,16 @@
  */
 package Ejercicio03;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
 public class FrmEjercicio03 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmEjercicio03
-     */
+    DefaultTableModel tabla = new DefaultTableModel();
+    VectorMedicamentos vector = new VectorMedicamentos();
     public FrmEjercicio03() {
         initComponents();
     }
@@ -38,7 +39,7 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
         txtSalir = new javax.swing.JButton();
         txtIngresar = new javax.swing.JButton();
         btnOrdenarNombre = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnOrdenarPrecioDes = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMedicamento = new javax.swing.JTable();
 
@@ -110,8 +111,18 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
         });
 
         btnOrdenarNombre.setText("Ordenar por Nombre");
+        btnOrdenarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarNombreActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Ordenar por Precio");
+        btnOrdenarPrecioDes.setText("Ordenar por Precio");
+        btnOrdenarPrecioDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarPrecioDesActionPerformed(evt);
+            }
+        });
 
         tblMedicamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +147,7 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(btnOrdenarNombre)
                 .addGap(31, 31, 31)
-                .addComponent(jButton2)
+                .addComponent(btnOrdenarPrecioDes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtSalir)
                 .addGap(33, 33, 33))
@@ -160,7 +171,7 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
                     .addComponent(txtIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrdenarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnOrdenarPrecioDes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -186,10 +197,20 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
         txtLaboratorio.setText("");
         txtPrecio.setText("");
         txtNombre.requestFocus();
-        vector.agregar(persona);
+        vector.agregar(medicamento);
         vector.mostrar(tabla);
-        tblPersona.setModel(tabla);
+        tblMedicamento.setModel(tabla);
     }//GEN-LAST:event_txtIngresarActionPerformed
+
+    private void btnOrdenarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarNombreActionPerformed
+        vector.ordenarSeleccionNombre();
+        vector.mostrar(tabla);
+    }//GEN-LAST:event_btnOrdenarNombreActionPerformed
+
+    private void btnOrdenarPrecioDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarPrecioDesActionPerformed
+        vector.ordenarSeleccionPrecioDes();
+        vector.mostrar(tabla);
+    }//GEN-LAST:event_btnOrdenarPrecioDesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,7 +219,7 @@ public class FrmEjercicio03 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrdenarNombre;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnOrdenarPrecioDes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -29,7 +29,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="btnOrdenarNombre" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnOrdenarPrecioDes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="txtSalir" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
                   <Component id="txtIngresar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="txtSalir" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="btnOrdenarNombre" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnOrdenarPrecioDes" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="163" max="-2" attributes="0"/>
@@ -181,11 +181,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ordenar por Nombre"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenarNombreActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnOrdenarPrecioDes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ordenar por Precio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenarPrecioDesActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

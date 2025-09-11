@@ -11,12 +11,12 @@ package Ejercicio02;
 public class Empleado {
     private String nombre;
     private int edad;
-    private double ventas;
+    private int ventas;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, int edad, double ventas) {
+    public Empleado(String nombre, int edad, int ventas) {
         this.nombre = nombre;
         this.edad = edad;
         this.ventas = ventas;
@@ -38,11 +38,11 @@ public class Empleado {
         this.edad = edad;
     }
 
-    public double getVentas() {
+    public int getVentas() {
         return ventas;
     }
 
-    public void setVentas(double ventas) {
+    public void setVentas(int ventas) {
         this.ventas = ventas;
     }
     

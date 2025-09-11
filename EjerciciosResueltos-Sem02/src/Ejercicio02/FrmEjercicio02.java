@@ -4,14 +4,16 @@
  */
 package Ejercicio02;
 
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author USER
  */
 public class FrmEjercicio02 extends javax.swing.JFrame {
-    
+    DefaultTableModel tabla = new DefaultTableModel();
+    VectorEmpleado vector = new VectorEmpleado();
    
     public FrmEjercicio02() {
         
@@ -51,27 +53,31 @@ public class FrmEjercicio02 extends javax.swing.JFrame {
 
         jLabel3.setText("Ventas:");
 
+        cbxEdad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "18  ", "19  ", "20  ", "21  ", "22  ", "23  ", "24  ", "25  ", "26  ", "27  ", "28  ", "29  ", "30  ", "31  ", "32  ", "33  ", "34  ", "35  ", "36  ", "37  ", "38  ", "39  ", "40  ", "41  ", "42  ", "43  ", "44  ", "45  ", "46  ", "47  ", "48  ", "49  ", "50  ", "51  ", "52  ", "53  ", "54  ", "55  ", "56  ", "57  ", "58  ", "59  ", "60  ", "61  ", "62  ", "63  ", "64  ", "65" }));
+
+        cbxVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1  ", "2  ", "3  ", "4  ", "5  ", "6  ", "7  ", "8  ", "9  ", "10  ", "11  ", "12  ", "13  ", "14  ", "15  ", "16  ", "17  ", "18  ", "19  ", "20  ", "21  ", "22  ", "23  ", "24  ", "25  ", "26  ", "27  ", "28  ", "29  ", "30  ", "31  ", "32  ", "33  ", "34  ", "35  ", "36  ", "37  ", "38  ", "39  ", "40  ", "41  ", "42  ", "43  ", "44  ", "45  ", "46  ", "47  ", "48  ", "49  ", "50" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(cbxVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cbxEdad, 0, 1, Short.MAX_VALUE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(cbxVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2)
+                        .addGap(27, 27, 27)
+                        .addComponent(cbxEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,15 +136,14 @@ public class FrmEjercicio02 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(txtIngresar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtOrdenar)
-                            .addGap(33, 33, 33)
-                            .addComponent(txtSalir)))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtIngresar)
+                        .addGap(38, 38, 38)
+                        .addComponent(txtOrdenar))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtSalir)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,20 +165,23 @@ public class FrmEjercicio02 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-        String nombre, telefono;
-        nombre = txtNombre.getText();
-        telefono = txtTelefono.getText();
-        Persona persona = new Persona(nombre, telefono);
+        String nombre;
+        int edad, ventas;
+        nombre = txtNombre.getText().trim();
+        edad = Integer.parseInt(cbxEdad.getSelectedItem().toString().trim());
+        ventas = Integer.parseInt(cbxVentas.getSelectedItem().toString().trim());
+        Empleado empleado = new Empleado(nombre, edad, ventas);
         txtNombre.setText("");
-        txtTelefono.setText("");
+        cbxEdad.setSelectedIndex(0);
+        cbxVentas.setSelectedIndex(0);
         txtNombre.requestFocus();
-        vector.agregar(persona);
+        vector.agregar(empleado);
         vector.mostrar(tabla);
-        tblPersona.setModel(tabla);
+        tblEmpleado.setModel(tabla);
     }//GEN-LAST:event_txtIngresarActionPerformed
 
     private void txtOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrdenarActionPerformed
-        vector.ordenarNombre();
+        vector.ordenarVentas();
         vector.mostrar(tabla);
     }//GEN-LAST:event_txtOrdenarActionPerformed
 

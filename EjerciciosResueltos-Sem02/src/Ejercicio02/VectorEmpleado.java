@@ -31,5 +31,20 @@ public class VectorEmpleado {
         }
         modelo.setDataVector(datos, titulos);
     }
-    
+    private void ordenarVentas(Empleado vector[], int totalElementos){
+        int i, posicion;
+        Empleado temporal;
+        for(i =1; i<totalElementos ; i++){
+            posicion = i;
+            temporal = vector[i];
+            while(posicion>0 && temporal.getVentas() > vector[posicion - 1].getVentas()){
+                vector[posicion] = vector[posicion - 1];
+                posicion--;
+            }
+            vector[posicion] = temporal; 
+        }
+    }
+    public void ordenarVentas(){
+        ordenarVentas(vector, totalElementos);
+    }
 }
