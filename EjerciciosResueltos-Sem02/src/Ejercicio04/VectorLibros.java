@@ -33,5 +33,27 @@ public class VectorLibros {
         }
         modelo.setDataVector(datos, titulos);
     }
-  
+  private void ordenarPorAutor(Libros vector[], int totalElementos) {
+    int salto = totalElementos / 2;
+    while (salto > 0) {
+        for (int i = salto; i < totalElementos; i++) {
+            int j = i - salto;
+            while (j >= 0) {
+                
+                if (vector[j].getAutor().compareToIgnoreCase(vector[j + salto].getAutor()) > 0) {
+                    Libros temp = vector[j];
+                    vector[j] = vector[j + salto];
+                    vector[j + salto] = temp;
+                    j = j - salto;
+                } else {
+                    j = -1;
+                }
+            }
+         }
+             salto = salto / 2;
+        }
+    }
+  public void ordenarPorAutor(){
+      ordenarPorAutor(vector, totalElementos);
+     }
 }

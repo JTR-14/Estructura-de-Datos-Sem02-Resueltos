@@ -4,12 +4,15 @@
  */
 package Ejercicio04;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
 public class FrmEjercicio04 extends javax.swing.JFrame {
-
+         DefaultTableModel tabla = new DefaultTableModel();
+        VectorLibros vector = new VectorLibros();
     /**
      * Creates new form FrmEjercicio04
      */
@@ -41,7 +44,7 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
         txtTitulo = new javax.swing.JTextField();
         txtEditorial = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        cbxPaginas = new javax.swing.JComboBox<>();
+        txtNPaginas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +56,11 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
         });
 
         btnOrdenarNombre.setText("Ordenar Alfabeticamente por Autor");
+        btnOrdenarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarNombreActionPerformed(evt);
+            }
+        });
 
         txtSalir.setText("SALIR");
         txtSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +118,7 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(27, 27, 27)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,10 +127,10 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)))
-                .addGap(18, 18, 18)
-                .addComponent(cbxPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,8 +149,8 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(cbxPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(txtNPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,23 +186,30 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
                     .addComponent(txtIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-        String nombre, telefono;
-        nombre = txtTitulo.getText();
-        telefono = txtTelefono.getText();
-        Persona persona = new Persona(nombre, telefono);
+        String codigo, titulo, autor, editorial;
+        int nPaginas;
+        codigo = txtCodigo.getText();
+        titulo = txtTitulo.getText();
+        autor = txtAutor.getText();
+        editorial = txtEditorial.getText();
+        nPaginas = Integer.parseInt(txtNPaginas.getText());
+        Libros libro = new Libros(codigo, titulo, autor, editorial, nPaginas);
         txtTitulo.setText("");
-        txtTelefono.setText("");
-        txtTitulo.requestFocus();
-        vector.agregar(persona);
+        txtCodigo.setText("");
+        txtAutor.setText("");
+        txtEditorial.setText("");
+        txtNPaginas.setText("");
+        txtCodigo.requestFocus();
+        vector.agregar(libro);
         vector.mostrar(tabla);
-        tblPersona.setModel(tabla);
+        tblLibros.setModel(tabla);
     }//GEN-LAST:event_txtIngresarActionPerformed
 
     private void txtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalirActionPerformed
@@ -205,6 +220,11 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAutorActionPerformed
 
+    private void btnOrdenarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarNombreActionPerformed
+        vector.ordenarPorAutor();
+        vector.mostrar(tabla);
+    }//GEN-LAST:event_btnOrdenarNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,7 +232,6 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrdenarNombre;
-    private javax.swing.JComboBox<String> cbxPaginas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -225,6 +244,7 @@ public class FrmEjercicio04 extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEditorial;
     private javax.swing.JButton txtIngresar;
+    private javax.swing.JTextField txtNPaginas;
     private javax.swing.JButton txtSalir;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
